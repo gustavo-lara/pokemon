@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import "./App.css"
 import pokedex from "./../public/pokedex.png"
 
 const PokemonApp = () => {
@@ -59,57 +60,69 @@ const PokemonApp = () => {
   return (
     <div className='container'>
 
-      <form className='form' onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={userInput}
-          onChange={(e) => setUserInput(e.target.value)}
-        />
-
-      </form>
       <div className='pokedex'>
-      <img src={pokedex} alt="" />
-      </div>
-      {pokemonData && (
-        <div className='cont'>
-          <img
-            src={
-              shiny
-                ? frontImg
-                  ? pokemonData.sprites.front_shiny
-                  : pokemonData.sprites.back_shiny
-                : frontImg
-                  ? pokemonData.sprites.front_default
-                  : pokemonData.sprites.back_default
-            }
-            alt={pokemonData.forms[0].name}
-          />
-          <h1>{pokemonData.forms[0].name}</h1>
-          <div className='buttons'>
-            <button onClick={handleDefaultClick}>Default</button>
-            <button onClick={handleShinyClick}>Shiny</button>
-            <button onClick={handleChangeClick}>Change</button>
-          </div>
+        <img src={pokedex} alt="" />
 
-          {pokemonData.types.map((type, index) => (
-            <div key={index} className={`type ${type.type.name}`}>
-              {type.type.name}
+        <div className='tudo'>
+          <form className='form' onSubmit={handleSubmit}>
+            <input
+              type="text"
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
+            />
+
+          </form>
+          {pokemonData && (
+            <div className='cont'>
+              <div className='NameImg'>
+              <h1>{pokemonData.forms[0].name}</h1>
+              <img
+                src={
+                  shiny
+                    ? frontImg
+                      ? pokemonData.sprites.front_shiny
+                      : pokemonData.sprites.back_shiny
+                    : frontImg
+                      ? pokemonData.sprites.front_default
+                      : pokemonData.sprites.back_default
+                }
+                alt={pokemonData.forms[0].name}
+              />
+              </div>
+
+
+              <div className='status'>
+              {pokemonData.types.map((type, index) => (
+                <div key={index} className={`type ${type.type.name}`}>
+                  {type.type.name}
+                </div>
+
+              ))}
+                <p>{`HP: ${pokemonData.stats[5].base_stat}`}</p>
+                <p>{`Attack: ${pokemonData.stats[4].base_stat}`}</p>
+                <p>{`Defense: ${pokemonData.stats[3].base_stat}`}</p>
+                <p>{`Sp. Attack: ${pokemonData.stats[2].base_stat}`}</p>
+                <p>{`Sp. Defense: ${pokemonData.stats[1].base_stat}`}</p>
+                <p>{`Speed: ${pokemonData.stats[0].base_stat}`}</p>
+                <p>{`Weight: ${pokemonData.weight}`}</p>
+                <p>{`Height: ${pokemonData.height}`}</p>
+              </div>
             </div>
 
-          ))}
 
 
-          <p>{`HP: ${pokemonData.stats[5].base_stat}`}</p>
-          <p>{`Attack: ${pokemonData.stats[4].base_stat}`}</p>
-          <p>{`Defense: ${pokemonData.stats[3].base_stat}`}</p>
-          <p>{`Sp. Attack: ${pokemonData.stats[2].base_stat}`}</p>
-          <p>{`Sp. Defense: ${pokemonData.stats[1].base_stat}`}</p>
-          <p>{`Speed: ${pokemonData.stats[0].base_stat}`}</p>
-          <p>{`Weight: ${pokemonData.weight}`}</p>
-          <p>{`Height: ${pokemonData.height}`}</p>
+
+          )}
+
         </div>
+          <div className='buttons'>
+            <button onClick={handleDefaultClick}>D</button>
+            <button onClick={handleShinyClick}>S</button>
+            <button onClick={handleChangeClick}>C</button>
+          </div>
+      </div>
 
-      )}
+
     </div>
   )
 };
