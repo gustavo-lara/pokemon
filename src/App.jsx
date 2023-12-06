@@ -116,9 +116,9 @@ const PokemonApp = () => {
 
         </div>
           <div className='buttons'>
-            <button onClick={handleDefaultClick}>D</button>
-            <button onClick={handleShinyClick}>S</button>
-            <button onClick={handleChangeClick}>C</button>
+            <button onClick={handleDefaultClick}></button>
+            <button onClick={handleShinyClick}></button>
+            <button onClick={handleChangeClick}></button>
           </div>
       </div>
 
