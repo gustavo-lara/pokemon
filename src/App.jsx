@@ -66,6 +66,7 @@ const PokemonApp = () => {
         <div className='tudo'>
           <form className='form' onSubmit={handleSubmit}>
             <input
+              autoFocus
               type="text"
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
